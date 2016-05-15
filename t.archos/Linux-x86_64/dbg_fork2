@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# test debugging forking children
+
+for a in . .. ../.. ; do [ -e $a/tests.sh ] && . $a/tests.sh ; done
+
+NAME='dbg.fork.child.bp'
+FILE=../../bins/elf/fork-test
+ARGS=-d
+BROKEN=
+CMDS='e scr.color=0
+e dbg.forks=true
+db sym.break_on_me
+dc
+dpc
+dc
+db-*
+dc
+dc
+dp-
+dp=`dp~ppid[1]`
+dc
+dc
+'
+EXPECT='child in leaf!
+child process terminating!
+[+] signal 17 aka SIGCHLD received 0
+main exiting!
+'
+IGNORE_ERR=0
+run_test
