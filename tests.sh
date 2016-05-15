@@ -173,6 +173,7 @@ run_test_real() {
 
   : > "${TMP_OUT}"
   echo -n "$FILE" > "${TMP_BIN}"
+
   cat > "$TMP_NAM" << __EOF__
 $TEST_NAME / $NAME
 __EOF__
