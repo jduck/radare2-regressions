@@ -48,6 +48,7 @@ CMDS='dr rax=`dr?rip`
 db rip
 3dso
 ? `dr?rax` - `dr?rip`~?00000000
+dk 9
 '
 EXPECT='0 0x0 00 0 0000:0000 0 00000000 0.0 0.000000f 0.000000
 0

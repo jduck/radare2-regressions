@@ -7,8 +7,9 @@ NAME='dbg.readpc'
 FILE=/bin/ls
 ARGS=-d
 BROKEN=
-CMDS='sr pc
+CMDS='sr PC
 p8 4
+dk 9
 '
 NOT_EXPECT=1
 EXPECT='ffffffff
