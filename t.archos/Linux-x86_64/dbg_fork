@@ -5,7 +5,7 @@
 for a in . .. ../.. ; do [ -e $a/tests.sh ] && . $a/tests.sh ; done
 
 NAME='dbg.fork.child.swstep'
-FILE=../../bins/elf/fork-test
+FILE=../../bins/elf/x64-fork-test
 ARGS=-d
 BROKEN=
 CMDS='e scr.color=0
@@ -29,7 +29,7 @@ IGNORE_ERR=1
 run_test
 
 NAME='dbg.fork.child.hwstep'
-FILE=../../bins/elf/fork-test
+FILE=../../bins/elf/x64-fork-test
 ARGS=-d
 BROKEN=
 CMDS='e scr.color=0
