@@ -4,11 +4,36 @@
 
 for a in . .. ../.. ; do [ -e $a/tests.sh ] && . $a/tests.sh ; done
 
-NAME='dbg.fork.child'
+NAME='dbg.fork.child.swstep'
 FILE=../../bins/elf/fork-test
 ARGS=-d
 BROKEN=
 CMDS='e scr.color=0
+e dbg.swstep=true
+e dbg.forks=true
+dc
+dpc
+dc
+dc
+dp=`dp~ppid[1]`
+dc
+dc
+dc
+'
+EXPECT='child in leaf!
+child process terminating!
+[+] signal 17 aka SIGCHLD received 0
+main exiting!
+'
+IGNORE_ERR=1
+run_test
+
+NAME='dbg.fork.child.hwstep'
+FILE=../../bins/elf/fork-test
+ARGS=-d
+BROKEN=
+CMDS='e scr.color=0
+e dbg.swstep=false
 e dbg.forks=true
 dc
 dpc
